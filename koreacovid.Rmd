@@ -69,6 +69,8 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
+Our numerical results show us that out of 100, males make up to 64% of covid related death to females at 36%. This also shows that males are twice as liekly to die from covid than females. 
+
 ## Inferential results 
 
 
