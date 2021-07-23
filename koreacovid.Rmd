@@ -1,7 +1,7 @@
 ---
 title: "covid 19"
-author: "Dr K"
-date: "5/2/2020"
+author: "Daniella Sanchez"
+date: "Summer 2021"
 output:
   html_document: default
   pdf_document: default
@@ -38,17 +38,36 @@ with(kRdata, table(Sex, result))
 
 ## We create two bar charts - one based on frequency and the other on percent, use ggplot commands to do this
 
-`
-
-  
-
+````{r}
+dd2 <- kRdata %>% group_by(sex,result) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
 
 
+# the group_by followed by summarize(count=n())
 
+basicC <- ggplot(dd2,aes(x=result,y=count,fill=sex))
+basicC + geom_bar(stat="identity",position="dodge")
 
-  
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=result,y=prcnt*100,fill=sex)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+```{r}
+barchartGC(~result + sex,data=kRdata)
+barchartGC(~result + sex,data=kRdata, type="percent")
+
+```
+
+The barcharts show that the make dealths related to covid make up to 60% of the total death and females make up to the other 40% of the death.
+
 ## Numerical results
 
+```{r}
+table1 <- xtabs(~result + Sex, data=kRdata)
+rowPerc(table1)
+colPerc(table1)
+```
 
 ## Inferential results 
 
